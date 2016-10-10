@@ -1,6 +1,6 @@
 # Concourse How-To's and Samples
 
-This repository provides sample code and recipes on Concourse CI pipelines and deploymentsw ith PCF
+This repository provides sample code and recipes on Concourse CI pipelines and deployments with PCF
 
 - [Blue-Green application deployment pipeline](https://github.com/pivotalservices/concourse-pipeline-samples/tree/master/blue-green-app-deployment)  
 [![Blue-Green application deployment pipeline](https://raw.githubusercontent.com/pivotalservices/concourse-pipeline-samples/master/common/images/bg-pipeline-icon.jpg)](https://github.com/pivotalservices/concourse-pipeline-samples/tree/master/blue-green-app-deployment)

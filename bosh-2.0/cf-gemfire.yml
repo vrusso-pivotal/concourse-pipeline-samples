@@ -1,0 +1,102 @@
+
+name: p-gemfire-350429c97c17f1d02bf6
+director_uuid: 681f6f01-bcf0-48f4-bffe-120107ecd7a2
+releases:
+- name: GemFire
+  version: latest
+stemcells:
+- alias: bosh-vsphere-esxi-ubuntu-trusty-go_agent
+  os: ubuntu-trusty
+  version: '3262.19'
+instance_groups:
+- name: gemfire-locator
+  azs:
+  - az
+  instances: 1
+  lifecycle: service
+  jobs:
+  - name: locator
+    release: GemFire
+    templates:
+    - {name: locator, release: GemFire}
+    - {name: gemfire-agent, release: GemFire}
+    - {name: arp-cleaner, release: GemFire}
+    consumes: {}
+    provides: {}
+  vm_type: small
+  stemcell: bosh-vsphere-esxi-ubuntu-trusty-go_agent
+  networks:
+  - name: default
+    default:
+    - dns
+    - gateway
+    static_ips:
+    - 10.0.0.200
+  properties:
+    gemfire:
+      locator:
+        addresses:
+        - 10.0.0.200
+        port: 55221
+        vm_memory: 2048
+        rest_port: 8888
+      cluster_topology:
+        number_of_locators: 1
+        min_number_of_locators: 1
+  update:
+    max_in_flight: 1
+  persistent_disk_pool: '10240'
+  env:
+    bosh:
+      password: 'c1oudc0w'
+- name: gemfire-server
+  azs:
+  - az
+  instances: 3
+  lifecycle: service
+  jobs:
+  - name: server
+    release: GemFire
+    templates:
+    - {name: server, release: GemFire}
+    - {name: gemfire-agent, release: GemFire}
+    - {name: arp-cleaner, release: GemFire}
+    consumes: {}
+    provides: {}
+  vm_type: medium
+  stemcell: bosh-vsphere-esxi-ubuntu-trusty-go_agent
+  networks:
+  - name: default
+    default:
+    - dns
+    - gateway
+    static_ips:
+    - 10.0.0.201
+    - 10.0.0.202
+    - 10.0.0.203
+  properties:
+    gemfire:
+      locator:
+        addresses:
+        - 10.0.0.200
+        port: 55221
+      server:
+        rest_port: 8888
+        port: 55001
+        vm_memory: 4096
+      cluster_topology:
+        number_of_locators: 1
+        number_of_servers: 3
+  update:
+    max_in_flight: 1
+  persistent_disk_pool: '10240'
+  env:
+    bosh:
+      password: 'c1oudc0w'
+update:
+  canaries: 1
+  canary_watch_time: 30000-300000
+  update_watch_time: 30000-300000
+  max_in_flight: 1
+  max_errors: 2
+  serial: false

@@ -1,0 +1,41 @@
+---
+jobs:
+- name: job-deploy
+  public: true
+  serial: true
+  plan:
+  - aggregate:
+    - get: resource-bosh-stemcell
+    - get: resource-bosh-release
+    - get: resource-manifest
+  - put: resource-gf-bosh-deployment
+    params:
+      manifest: resource-manifest/cf-manifest.yml
+      releases:
+        - resource-bosh-release/bosh-2.0/GemFire-dev.4.tgz
+      stemcells:
+        - resource-bosh-stemcell/*.tgz
+resources:
+- name: resource-manifest
+  type: git
+  source:
+    uri: https://gist.github.com/6fe4d292efea82ec7dc002cc7916bb1f.git
+
+- name: resource-bosh-release
+  type: git
+  source:
+    uri: https://github.com/azwickey-pivotal/concourse-pipeline-samples.git
+
+- name: resource-bosh-stemcell
+  type: bosh-io-stemcell
+  source:
+    name: {{bosh-stemcell-name}}
+
+- name: resource-gf-bosh-deployment
+  type: bosh-deployment
+  source:
+    target: {{bosh-target}}
+    username: {{bosh-username}}
+    password: {{bosh-password}}
+    deployment: p-gemfire-350429c97c17f1d02bf6 # from the manifest.yml in resource-manifest
+    ignore_ssl: true

@@ -23,7 +23,7 @@ resources:
     client_id: {{bosh-username}}
     client_secret: {{bosh-password}}
     ca_cert: {{ca-cert}}
-    deployment: p-gemfire-350429c97c17f1d02bf6 # from the manifest.yml in resource-manifest
+    deployment: 0ec2dfce-50a4-443f-b36a-a3ff40bd5834 # from the manifest.yml in resource-manifest
     ignore_ssl: true
 
 jobs:

@@ -1,6 +1,6 @@
 
-name: p-gemfire-350429c97c17f1d02bf6
-director_uuid: 681f6f01-bcf0-48f4-bffe-120107ecd7a2
+name: gemfire
+director_uuid: 0ec2dfce-50a4-443f-b36a-a3ff40bd5834
 releases:
 - name: GemFire
   version: latest
@@ -31,7 +31,7 @@ instance_groups:
     - dns
     - gateway
     static_ips:
-    - 10.0.0.200
+    - 10.193.58.245
   properties:
     gemfire:
       locator:
@@ -71,14 +71,14 @@ instance_groups:
     - dns
     - gateway
     static_ips:
-    - 10.0.0.201
-    - 10.0.0.202
-    - 10.0.0.203
+    - 10.193.58.246
+    - 10.193.58.247
+    - 10.193.58.248
   properties:
     gemfire:
       locator:
         addresses:
-        - 10.0.0.200
+        - 10.193.58.245
         port: 55221
       server:
         rest_port: 8888

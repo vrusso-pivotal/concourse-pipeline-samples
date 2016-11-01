@@ -10,9 +10,5 @@ image_resource:
 inputs:
 - name: git-assets
 
-outputs:
-- name: application-jar
-  path: git-assets/boot-sample/concourse-demo.jar
-
 run:
   path: git-assets/boot-sample/ci/tasks/package.sh

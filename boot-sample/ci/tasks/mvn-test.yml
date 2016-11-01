@@ -11,6 +11,6 @@ inputs:
 - name: git-assets
 
 run:
-  path: boot-sample
+  path: boot-sample/mvnw
   args:
-  - mvn test
+  - test

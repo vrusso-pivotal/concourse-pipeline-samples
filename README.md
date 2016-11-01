@@ -11,7 +11,7 @@ The steps automated in the pipeline are as follows:
 1. **Retrieve the application's source code from GitHub**  
    The pipeline is automatically triggered upon a code update/check-in event in the GitHub repository.
 
-1. **Unit test new version of application code**  
+1. **Unit test new versions of application code**  
    Using the Mocha+Chai frameworks, the pipeline runs the test on the updated Node.js application code.
 
 1. **Deploy new version of application to Cloud Foundry**  

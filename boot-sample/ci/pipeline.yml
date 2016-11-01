@@ -34,3 +34,4 @@ jobs:
   - put: cloudfoundry
     params:
       manifest: git-assets/boot-sample/manifest.yml
+      path: app-output/concourse-demo.jar

@@ -6,10 +6,13 @@ resources:
     uri: https://github.com/azwickey-pivotal/concourse-pipeline-samples
 
 jobs:
-- name: test-complile
+- name: artifact-generation
   public: true
   plan:
   - get: git-assets
     trigger: true
   - task: mvn-test
-    file: boot-sample/ci/tasks/mvn-test.yml
+    file: git-assets/boot-sample/ci/tasks/mvn-test.yml
+  - task: mvn-package
+    file: git-assets/boot-sample/ci/tasks/mvn-package.yml
+  

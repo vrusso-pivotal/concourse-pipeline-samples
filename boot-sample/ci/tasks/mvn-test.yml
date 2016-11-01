@@ -11,6 +11,6 @@ inputs:
 - name: git-assets
 
 run:
-  path: concourse-pipeline-samples/boot-sample/mvnw
+  path: boot-sample/mvnw
   args:
   - test

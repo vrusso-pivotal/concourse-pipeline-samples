@@ -2,23 +2,14 @@ resources:
 - name: git-assets
   type: git
   source:
-    uri: https://github.com/azwickey-pivotal/concourse-pipeline-samples
     branch: master
+    uri: https://github.com/azwickey-pivotal/concourse-pipeline-samples
 
 jobs:
-- name: unit-test
+- name: unit-tests
   public: true
   plan:
   - get: git-assets
     trigger: true
   - task: mvn-test
     file: git-assets/boot-sample/ci/tasks/mvn-test.yml
-- name: deploy-cf
-  public: true
-  plan:
-  - get: git-assets
-    trigger: true
-    passed:
-      - unit-test
-  - task: mvn-package
-    file: git-assets/boot-sample/ci/tasks/mvn-package.yml

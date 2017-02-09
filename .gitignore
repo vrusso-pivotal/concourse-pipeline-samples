@@ -5,3 +5,4 @@ fly
 pipeline-uc*.yml
 .DS*
 node_modules/
+.idea

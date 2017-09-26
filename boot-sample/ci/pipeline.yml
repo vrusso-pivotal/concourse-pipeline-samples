@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/azwickey-pivotal/concourse-pipeline-samples
+    uri: https://github.com/vrusso-pivotal/concourse-pipeline-samples
 - name: cloudfoundry
   type: cf
   source:

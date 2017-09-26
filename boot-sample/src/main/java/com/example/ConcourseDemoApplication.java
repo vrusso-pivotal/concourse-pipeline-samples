@@ -21,4 +21,9 @@ public class ConcourseDemoApplication {
 	public String getVersion() {
 		return _version;
 	}
+	
+	@RequestMapping("/")
+	public String hello() {
+		return "Hello World!";
+	}
 }

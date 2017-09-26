@@ -33,5 +33,5 @@ jobs:
     file: git-assets/boot-sample/ci/tasks/mvn-package.yml
   - put: cloudfoundry
     params:
-      - manifest: git-assets/boot-sample/manifest.yml
-      - path: app-output/concourse-demo.jar
+      manifest: git-assets/boot-sample/manifest.yml
+      path: app-output/concourse-demo.jar

@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/vrusso-pivotal/concourse-pipeline-samples
+    uri: https://{{git-token}}@github.com/Pivotal-Field-Engineering/Delta-Crew-POC.git
 - name: cloudfoundry
   type: cf
   source:
@@ -34,4 +34,4 @@ jobs:
   - put: cloudfoundry
     params:
       manifest: git-assets/boot-sample/manifest.yml
-      path: app-output/concourse-demo.jar
+      path: app-output/taq-bid.jar

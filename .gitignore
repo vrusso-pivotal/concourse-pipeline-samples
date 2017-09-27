@@ -6,3 +6,5 @@ pipeline-uc*.yml
 .DS*
 node_modules/
 .idea
+
+boot-sample/ci/credentials.yml.sample

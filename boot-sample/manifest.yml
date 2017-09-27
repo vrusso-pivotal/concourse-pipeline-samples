@@ -1,6 +1,11 @@
 ---
+memory: 1024M
+instances: 1
 applications:
-- name: concourse-demo-boot
-  memory: 1G
-  instances: 1
-  buildpack: java_buildpack
+- name: crew-concourse
+  host: crew-concourse-v1
+  buildpack: https://github.com/cloudfoundry/java-buildpack
+  path: target/taq-bid-0.0.1-SNAPSHOT.jar
+env:
+  CF_TARGET: https://api.run.haas-97.pez.pivotal.io
+  RUNTIME_ENVIRONMENT: spring-boot
